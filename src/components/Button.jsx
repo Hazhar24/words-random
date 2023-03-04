@@ -80,7 +80,7 @@ const Tabs = () => {
             </div>
           </div>
           <div>
-            <button onClick={refreshPage} className='border w-28 h-14 border-green-600 bg-green-200'>Refresh</button>
+            <button onClick={refreshPage} className='border w-28 h-14 border-green-600 bg-green-300'>Refresh</button>
           </div>
         </div>
       </div>
