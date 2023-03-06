@@ -49,8 +49,10 @@ const Tabs = () => {
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
+
+
                 <div className={openTab === 1 ? "block" : "hidden"} id="link1">
-                  <div className='flex flex-wrap justify-center items-center  mx-auto'>
+                  <div className='flex flex-wrap justify-center items-center mx-auto'>
                     {dataOne.map((item) => (
                       <button className='border border-blue-300 font-semibold w-24 h-12 flex items-center justify-center m-1 hover:text-lg'>
                         {item}
@@ -76,6 +78,8 @@ const Tabs = () => {
                     ))}
                   </div>
                 </div>
+
+                
               </div>
             </div>
           </div>
