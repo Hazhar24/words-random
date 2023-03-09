@@ -1,26 +1,15 @@
 import words from "random-words";
 import React from "react";
+import { useState } from "react";
 
 var dataOne = words({ exactly: 20, maxLength: 2 });
 var dataTwo = words({ exactly: 20, maxLength: 4 });
 var dataThree = words({ exactly: 20, maxLength: 7 });
 
 const Tabs = () => {
-  const refreshPage = () => {
-    window.location.reload(true);
-  };
-  const [openTab, setOpenTab] = React.useState(1);
-  const [Choosewords, setSelection] = React.useState("");
-
-  const selection1 = () => {
-    setSelection(Choosewords + selection1)
-  };
-  const selection2 = () => {
-    setSelection(Choosewords + selection1)
-  };
-  const selection3 = () => {
-    setSelection(Choosewords + selection1)
-  };
+  const refreshPage = () => {window.location.reload(true)};
+  const [openTab, setOpenTab] = useState(1);
+  const [choosewords, setChoosewords] = useState([]);
 
   return (
     <>
@@ -61,7 +50,7 @@ const Tabs = () => {
                 <div className={openTab === 1 ? "block" : "hidden"} id="link1">
                   <div className="flex flex-wrap justify-center items-center mx-auto">
                     {dataOne.map((item) => (
-                      <button className="border border-blue-300 font-semibold w-24 h-12 flex items-center justify-center m-1 hover:text-lg" onClick={selection1}>
+                      <button className="border-2 border-blue-300 font-semibold w-24 h-12 flex items-center justify-center m-1 hover:text-lg" onClick={() => setChoosewords(choosewords + item)}>
                         {item}
                       </button>
                     ))}
@@ -70,7 +59,7 @@ const Tabs = () => {
                 <div className={openTab === 2 ? "block" : "hidden"} id="link2">
                   <div className="flex flex-wrap justify-center items-center mx-auto">
                     {dataTwo.map((item) => (
-                      <button className="border border-blue-300 font-semibold w-24 h-12 flex items-center justify-center m-1 hover:text-lg" onClick={selection2}>
+                      <button className="border-2 border-blue-300 font-semibold w-24 h-12 flex items-center justify-center m-1 hover:text-lg" onClick={() => setChoosewords(choosewords + item)}>
                         {item}
                       </button>
                     ))}
@@ -79,7 +68,7 @@ const Tabs = () => {
                 <div className={openTab === 3 ? "block" : "hidden"} id="link3">
                   <div className="flex flex-wrap justify-center items-center mx-auto">
                     {dataThree.map((item) => (
-                      <button className="border border-blue-300 font-semibold w-24 h-12 flex items-center justify-center m-1 hover:text-lg" onClick={selection3}>
+                      <button className="border-2 border-blue-300 font-semibold w-24 h-12 flex items-center justify-center m-1 hover:text-lg" onClick={() => setChoosewords(choosewords + item)}>
                         {item}
                       </button>
                     ))}
@@ -95,9 +84,11 @@ const Tabs = () => {
               Refresh
             </button>
           </div>
-          <h1 className={"font-bold flex items-center justify-center w-full h-44 mt-20 uppercase px-5 py-3 shadow-lg rounded bg-blue-200 leading-normal"}>
-            {Choosewords}
-          </h1>
+          <div>
+            <div>
+                {choosewords}
+            </div>
+          </div>
         </div>
       </div>
     </>
