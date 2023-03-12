@@ -11,13 +11,18 @@ const Tabs = () => {
   const [openTab, setOpenTab] = useState(1);
   const [choosewords, setChoosewords] = useState([]);
 
+  const addItem = (item) => {
+    setChoosewords (choosewords + item)
+  }
+
+
   return (
     <>
       <div className="flex flex-wrap">
         <div className="w-full">
           <ul className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row" role="tablist">
             <li className="mr-2 last:mr-0 flex-auto text-center">
-              <a className={"text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block bg-blue-100 leading-normal" + (openTab === 1 ? "text-black bg-" + "-600 bg-blue-400 text-white" : "text-" + "-600")}
+              <a className={"text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block bg-blue-100 leading-normal" + (openTab === 1 ? " text-black bg-" + "-600 bg-blue-400 text-white" : "text-" + "-600")}
                 onClick={(e) => {e.preventDefault(); setOpenTab(1);}}
                 data-toggle="tab"
                 href="#link1"
@@ -50,7 +55,7 @@ const Tabs = () => {
                 <div className={openTab === 1 ? "block" : "hidden"} id="link1">
                   <div className="flex flex-wrap justify-center items-center mx-auto">
                     {dataOne.map((item) => (
-                      <button className="border-2 border-blue-300 font-semibold w-24 h-12 flex items-center justify-center m-1 hover:text-lg" onClick={() => setChoosewords(choosewords + item)}>
+                      <button className="border-2 border-blue-300 font-semibold w-24 h-12 flex items-center justify-center m-1 hover:text-lg" onClick={() => {addItem(item)}}>
                         {item}
                       </button>
                     ))}
@@ -59,7 +64,7 @@ const Tabs = () => {
                 <div className={openTab === 2 ? "block" : "hidden"} id="link2">
                   <div className="flex flex-wrap justify-center items-center mx-auto">
                     {dataTwo.map((item) => (
-                      <button className="border-2 border-blue-300 font-semibold w-24 h-12 flex items-center justify-center m-1 hover:text-lg" onClick={() => setChoosewords(choosewords + item)}>
+                      <button className="border-2 border-blue-300 font-semibold w-24 h-12 flex items-center justify-center m-1 hover:text-lg" onClick={() => {addItem(item)}}>
                         {item}
                       </button>
                     ))}
@@ -68,7 +73,7 @@ const Tabs = () => {
                 <div className={openTab === 3 ? "block" : "hidden"} id="link3">
                   <div className="flex flex-wrap justify-center items-center mx-auto">
                     {dataThree.map((item) => (
-                      <button className="border-2 border-blue-300 font-semibold w-24 h-12 flex items-center justify-center m-1 hover:text-lg" onClick={() => setChoosewords(choosewords + item)}>
+                      <button className="border-2 border-blue-300 font-semibold w-24 h-12 flex items-center justify-center m-1 hover:text-lg" onClick={() => {addItem(item)}}>
                         {item}
                       </button>
                     ))}
@@ -78,16 +83,12 @@ const Tabs = () => {
             </div>
           </div>
           <div>
-            <button
-              onClick={refreshPage}
-              className="border mt-12 w-28 h-14 border-green-400 bg-green-200">
+            <button onClick={refreshPage} className="border mt-12 w-28 h-14 border-green-400 bg-green-200">
               Refresh
             </button>
           </div>
-          <div>
-            <div>
-                {choosewords}
-            </div>
+          <div className="mt-20 border w-24 h-44 flex justify-center items-center">
+            <button>{choosewords}</button>
           </div>
         </div>
       </div>
