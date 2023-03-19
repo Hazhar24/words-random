@@ -5,12 +5,13 @@ import randomWords from 'random-words';
 const Word = ({ onClick, children }) => {
   return (
     <button
-      className="border w-56 h-12 rounded-lg text-sm font-medium text-gray-800 m-1 hover:bg-gray-200"
-      onClick={onClick}>
+      className="px-4 py-2 border rounded-lg text-sm font-medium text-gray-800 mr-2 mb-2 hover:bg-gray-200" onClick={onClick}>
       {children}
     </button>
   );
 }
+
+
 
 const Words = ({ length, onWordClick }) => {
   const [words, setWords] = useState([]);
@@ -22,7 +23,7 @@ const Words = ({ length, onWordClick }) => {
   }, [length]);
 
   return (
-    <div className="mb-12">
+    <div className="flex flex-wrap mb-4">
       {words.map((word, index) => (
         <Word key={index} onClick={() => onWordClick(word)}>
           {word}
@@ -32,9 +33,11 @@ const Words = ({ length, onWordClick }) => {
   );
 }
 
+
+
 const LevelSelection = ({ options, onOptionSelect }) => {
   return (
-    <div className="mb-10">
+    <div className="mb-2">
       {options.map((option) => (
         <Word
           key={option}
@@ -51,7 +54,9 @@ const ListWordsSelected = ({ words }) => {
   return (
     <ul className="list-disc list-inside">
       {words.map((word, index) => (
-        <ol key={index}>{word}</ol>
+        <li key={index}>
+          {word}
+        </li>
       ))}
     </ul>
   );
@@ -75,8 +80,7 @@ export default function App() {
         <h2 className="text-xl font-medium mb-2">Words</h2>
         <LevelSelection
           options={['Easy', 'Medium', 'Hard']}
-          onOptionSelect={handleOptionSelect}
-        />
+          onOptionSelect={handleOptionSelect}/>
         <Words length={selectedLength} onWordClick={handleWordClick} />
       </div>
       <div className="mb-4">

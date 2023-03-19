@@ -1,9 +1,9 @@
 import "./App.css";
-import Login from "./Home/Login";
+import Button from "./components/Button";
 
 function App() {
   return (
-    <Login />
+    <Button />
   );
 }
 
